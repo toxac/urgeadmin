@@ -22,11 +22,17 @@ fix -> removed the filter_horizontal
 
 ## <class 'users.admin.NewsletterSubscriptionsAdmin'>: (admin.E002) The value of 'raw_id_fields[0]' refers to 'user_id', which is not a field of 'users.NewsletterSubscriptions'.
 
+fix -> replaced user_id references to user
+
+## users.admin.UserProfilesAdmin error
+
 <class 'users.admin.UserProfilesAdmin'>: (admin.E035) The value of 'readonly_fields[0]' refers to 'other_details', which is not a callable, an attribute of 'UserProfilesAdmin', or an attribute of 'users.UserProfiles'.
 
 <class 'users.admin.UserProfilesAdmin'>: (admin.E035) The value of 'readonly_fields[1]' refers to 'source_details', which is not a callable, an attribute of 'UserProfilesAdmin', or an attribute of 'users.UserProfiles'.
 
 <class 'users.admin.UserProfilesAdmin'>: (admin.E035) The value of 'readonly_fields[2]' refers to 'communications', which is not a callable, an attribute of 'UserProfilesAdmin', or an attribute of 'users.UserProfiles'.
+
+## **fix** -> removed other_details, source_details, and communications from readonly_fields of UserProfilesAdmin
 
 users.Leads.program: (fields.E300) Field defines a relation with model 'program.Programs', which is either not installed, or is abstract.
 

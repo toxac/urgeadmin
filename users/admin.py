@@ -87,9 +87,6 @@ class UserProfilesAdmin(admin.ModelAdmin):
 
     # Make JSON fields read-only to prevent direct editing through the admin, as it can be complex.
     readonly_fields = (
-        'other_details',
-        'source_details',
-        'communications',
         'activations',
         'roles',
         'interests',
@@ -124,7 +121,7 @@ class UserSkillsAdmin(admin.ModelAdmin):
 
 @admin.register(NewsletterSubscriptions)
 class NewsletterSubscriptionsAdmin(admin.ModelAdmin):
-    list_display = ('email', 'user_id', 'status', 'created_at')
+    list_display = ('email', 'user', 'status', 'created_at')
     list_filter = ('status',)
-    search_fields = ('email', 'user_id',)
-    raw_id_fields = ('user_id',)
+    search_fields = ('email')
+    raw_id_fields = ('user',)
