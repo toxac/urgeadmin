@@ -1,0 +1,20 @@
+create table public.content_meta (
+  id uuid not null default gen_random_uuid (),
+  created_at timestamp with time zone not null default now(),
+  content_type text not null,
+  sequence smallint null,
+  title text null,
+  description text null,
+  updated_at timestamp with time zone null,
+  related_content jsonb null,
+  milestone_id uuid null,
+  program_id uuid null,
+  slug text null,
+  difficulty text null,
+  has_form boolean null default false,
+  content text null,
+  accomplishment_id bigint null,
+  constraint content_meta_pkey primary key (id),
+  constraint content_meta_accomplishment_id_fkey foreign KEY (accomplishment_id) references accomplishments (id),
+  constraint content_meta_milestone_id_fkey foreign KEY (milestone_id) references content_meta (id)
+) TABLESPACE pg_default;
