@@ -44,7 +44,7 @@ class Leads(models.Model):
     phone = models.TextField(blank=True, null=True)
     # The 'programs' model is not defined yet, so we use a string reference
     program = models.ForeignKey(
-        'program.Programs',
+        'content.Programs',
         on_delete=models.DO_NOTHING,
         db_column='program_id',
         blank=True,
@@ -80,7 +80,7 @@ class UserEnrollments(models.Model):
         null=True
     )
     program = models.ForeignKey(
-        'program.Programs',
+        'content.Programs',
         on_delete=models.DO_NOTHING,
         db_column='program_id',
         blank=True,
@@ -100,14 +100,14 @@ class UserMemberships(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     valid_until = models.DateTimeField(blank=True, null=True)
     offering = models.ForeignKey(
-        'content.Offerings',
+        'finance.Offerings',
         on_delete=models.DO_NOTHING,
         db_column='offering_id',
         blank=True,
         null=True
     )
     transaction = models.ForeignKey(
-        'user_transactions',
+        'finance.UserTransactions',
         on_delete=models.DO_NOTHING,
         db_column='transaction_id',
         blank=True,
