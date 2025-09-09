@@ -25,7 +25,6 @@ class ChallengesAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description')
     list_filter = ('difficulty', 'is_open', 'language', 'program')
     raw_id_fields = ('content_meta', 'program', 'milestone')
-    filter_horizontal = ('tags',)
 
 
 @admin.register(ChallengeSteps)
@@ -50,4 +49,3 @@ class ResourceMetaAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description', 'slug')
     list_filter = ('status', 'tags', 'categories')
     raw_id_fields = ('created_by',)
-    filter_horizontal = ('tags', 'categories',)
