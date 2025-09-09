@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
 from .models import (
     Accomplishments, UserAccomplishments, UserBookmarks, UserChallengeProgress,
     UserCheerSquad, UserCheerSquadUpdates, UserNotes, UserOpportunities,
@@ -10,12 +11,12 @@ from .models import (
 
 
 @admin.register(Accomplishments)
-class AccomplishmentsAdmin(admin.ModelAdmin):
+class AccomplishmentsAdmin(ModelAdmin):
     list_display = ('id',)
 
 
 @admin.register(UserAccomplishments)
-class UserAccomplishmentsAdmin(admin.ModelAdmin):
+class UserAccomplishmentsAdmin(ModelAdmin):
     list_display = ('id', 'user', 'accomplishment', 'earned_at')
     search_fields = ('user__username', 'accomplishment__id')
     list_filter = ('earned_at',)
@@ -23,7 +24,7 @@ class UserAccomplishmentsAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserBookmarks)
-class UserBookmarksAdmin(admin.ModelAdmin):
+class UserBookmarksAdmin(ModelAdmin):
     list_display = ('id', 'user', 'content_type',
                     'related_content_id', 'created_at')
     search_fields = ('user__username', 'content_type', 'related_content_id')
@@ -32,7 +33,7 @@ class UserBookmarksAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserChallengeProgress)
-class UserChallengeProgressAdmin(admin.ModelAdmin):
+class UserChallengeProgressAdmin(ModelAdmin):
     list_display = ('id', 'user', 'challenge',
                     'completed_at', 'last_step_completed')
     search_fields = ('user__username', 'challenge__title')
@@ -41,7 +42,7 @@ class UserChallengeProgressAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserCheerSquad)
-class UserCheerSquadAdmin(admin.ModelAdmin):
+class UserCheerSquadAdmin(ModelAdmin):
     list_display = ('id', 'user', 'name', 'relationship', 'status')
     search_fields = ('user__username', 'name', 'email')
     list_filter = ('status', 'relationship')
@@ -49,7 +50,7 @@ class UserCheerSquadAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserCheerSquadUpdates)
-class UserCheerSquadUpdatesAdmin(admin.ModelAdmin):
+class UserCheerSquadUpdatesAdmin(ModelAdmin):
     list_display = ('id', 'user', 'cheer_squad',
                     'type', 'status', 'created_at')
     search_fields = ('user__username', 'cheer_squad__name', 'update_text')
@@ -58,7 +59,7 @@ class UserCheerSquadUpdatesAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserNotes)
-class UserNotesAdmin(admin.ModelAdmin):
+class UserNotesAdmin(ModelAdmin):
     list_display = ('id', 'user', 'title', 'content_type', 'updated_at')
     search_fields = ('user__username', 'title', 'content')
     list_filter = ('content_type',)
@@ -66,7 +67,7 @@ class UserNotesAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserOpportunities)
-class UserOpportunitiesAdmin(admin.ModelAdmin):
+class UserOpportunitiesAdmin(ModelAdmin):
     list_display = ('id', 'user', 'title',
                     'discovery_method', 'status', 'rank')
     search_fields = ('user__username', 'title', 'description')
@@ -75,7 +76,7 @@ class UserOpportunitiesAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserOpportunityComments)
-class UserOpportunityCommentsAdmin(admin.ModelAdmin):
+class UserOpportunityCommentsAdmin(ModelAdmin):
     list_display = ('id', 'user', 'opportunity', 'comment_type', 'created_at')
     search_fields = ('user__username', 'content')
     list_filter = ('comment_type',)
@@ -83,7 +84,7 @@ class UserOpportunityCommentsAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserOpportunitySegments)
-class UserOpportunitySegmentsAdmin(admin.ModelAdmin):
+class UserOpportunitySegmentsAdmin(ModelAdmin):
     list_display = ('id', 'user', 'opportunity',
                     'segment_name', 'validation_status')
     search_fields = ('user__username', 'segment_name', 'segment_description')
@@ -92,7 +93,7 @@ class UserOpportunitySegmentsAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserProgress)
-class UserProgressAdmin(admin.ModelAdmin):
+class UserProgressAdmin(ModelAdmin):
     list_display = ('id', 'user', 'content_title', 'status', 'completed_at')
     search_fields = ('user__username', 'content_title', 'content_slug')
     list_filter = ('status', 'content_type', 'completed_at')
@@ -100,7 +101,7 @@ class UserProgressAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserQuestions)
-class UserQuestionsAdmin(admin.ModelAdmin):
+class UserQuestionsAdmin(ModelAdmin):
     list_display = ('id', 'user', 'title', 'is_public', 'status')
     search_fields = ('user__username', 'title', 'content')
     list_filter = ('is_public', 'status', 'content_type')
@@ -108,7 +109,7 @@ class UserQuestionsAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserQuestionResponses)
-class UserQuestionResponsesAdmin(admin.ModelAdmin):
+class UserQuestionResponsesAdmin(ModelAdmin):
     list_display = ('id', 'user', 'question', 'feedback_rating', 'created_at')
     search_fields = ('user__username', 'content')
     list_filter = ('feedback_rating', 'created_at')

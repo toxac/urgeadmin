@@ -1,9 +1,10 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
 from .models import Discounts, Offerings, UserTransactions
 
 
 @admin.register(Discounts)
-class DiscountsAdmin(admin.ModelAdmin):
+class DiscountsAdmin(ModelAdmin):
     list_display = (
         'code', 'entity_name', 'entity_type', 'value', 'value_type',
         'valid_from', 'valid_until'
@@ -13,7 +14,7 @@ class DiscountsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Offerings)
-class OfferingsAdmin(admin.ModelAdmin):
+class OfferingsAdmin(ModelAdmin):
     list_display = (
         'name', 'entity_type', 'base_price_amount', 'is_active',
         'duration_months', 'created_at'
@@ -24,7 +25,7 @@ class OfferingsAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserTransactions)
-class UserTransactionsAdmin(admin.ModelAdmin):
+class UserTransactionsAdmin(ModelAdmin):
     list_display = (
         'id', 'user', 'offering_name', 'status', 'total_amount_paid',
         'created_at'

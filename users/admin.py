@@ -1,39 +1,40 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
 from .models import Roles, UserRoles, Leads, UserEnrollments, UserMemberships, UserProfiles, UserSkills, NewsletterSubscriptions
 
 # Register your models here.
 
 
 @admin.register(Roles)
-class RolesAdmin(admin.ModelAdmin):
+class RolesAdmin(ModelAdmin):
     list_display = ('id', 'name', 'description', 'created_at')
     search_fields = ('name',)
     list_filter = ('created_at',)
 
 
 @admin.register(UserRoles)
-class UserRolesAdmin(admin.ModelAdmin):
+class UserRolesAdmin(ModelAdmin):
     list_display = ('id', 'user_id', 'role_id', 'role_name', 'created_at')
     search_fields = ('user_id',)
     list_filter = ('role_name',)
 
 
 @admin.register(Leads)
-class LeadsAdmin(admin.ModelAdmin):
+class LeadsAdmin(ModelAdmin):
     list_display = ('email', 'first_name', 'last_name', 'status', 'created_at')
     search_fields = ('email', 'first_name', 'last_name')
     list_filter = ('status', 'source', 'created_at')
 
 
 @admin.register(UserEnrollments)
-class UserEnrollmentsAdmin(admin.ModelAdmin):
+class UserEnrollmentsAdmin(ModelAdmin):
     list_display = ('id', 'user', 'program', 'enrolled_at')
     search_fields = ('user__username', 'program_name')
     list_filter = ('enrolled_at', 'program_name')
 
 
 @admin.register(UserMemberships)
-class UserMembershipsAdmin(admin.ModelAdmin):
+class UserMembershipsAdmin(ModelAdmin):
     list_display = ('id', 'user', 'offering', 'status',
                     'created_at', 'valid_until')
     search_fields = ('user__username', 'status')
@@ -41,7 +42,7 @@ class UserMembershipsAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserProfiles)
-class UserProfilesAdmin(admin.ModelAdmin):
+class UserProfilesAdmin(ModelAdmin):
     list_display = ('user', 'username', 'first_name',
                     'last_name', 'last_active_at')
     search_fields = ('username', 'first_name', 'last_name')
@@ -102,7 +103,7 @@ class UserProfilesAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserSkills)
-class UserSkillsAdmin(admin.ModelAdmin):
+class UserSkillsAdmin(ModelAdmin):
     list_display = (
         'id', 'user', 'name', 'category', 'subcategory', 'proficiency_level',
         'created_at'
@@ -120,8 +121,8 @@ class UserSkillsAdmin(admin.ModelAdmin):
 
 
 @admin.register(NewsletterSubscriptions)
-class NewsletterSubscriptionsAdmin(admin.ModelAdmin):
+class NewsletterSubscriptionsAdmin(ModelAdmin):
     list_display = ('email', 'user', 'status', 'created_at')
     list_filter = ('status',)
-    search_fields = ('email')
+    search_fields = ('email',)
     raw_id_fields = ('user',)

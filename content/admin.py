@@ -1,16 +1,17 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
 from .models import Programs, ContentMeta, Challenges, ChallengeSteps, Events, ResourceMeta
 
 
 @admin.register(Programs)
-class ProgramsAdmin(admin.ModelAdmin):
+class ProgramsAdmin(ModelAdmin):
     list_display = ('id', 'name', 'type', 'mode', 'created_at')
     search_fields = ('name', 'description')
     list_filter = ('type', 'mode')
 
 
 @admin.register(ContentMeta)
-class ContentMetaAdmin(admin.ModelAdmin):
+class ContentMetaAdmin(ModelAdmin):
     list_display = ('id', 'title', 'content_type',
                     'sequence', 'program', 'difficulty')
     search_fields = ('title', 'description', 'slug')
@@ -19,7 +20,7 @@ class ContentMetaAdmin(admin.ModelAdmin):
 
 
 @admin.register(Challenges)
-class ChallengesAdmin(admin.ModelAdmin):
+class ChallengesAdmin(ModelAdmin):
     list_display = ('id', 'title', 'program',
                     'difficulty', 'is_open', 'pub_date')
     search_fields = ('title', 'description')
@@ -28,7 +29,7 @@ class ChallengesAdmin(admin.ModelAdmin):
 
 
 @admin.register(ChallengeSteps)
-class ChallengeStepsAdmin(admin.ModelAdmin):
+class ChallengeStepsAdmin(ModelAdmin):
     list_display = ('id', 'title', 'challenge', 'sequence')
     search_fields = ('title', 'instructions')
     list_filter = ('challenge',)
@@ -36,7 +37,7 @@ class ChallengeStepsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Events)
-class EventsAdmin(admin.ModelAdmin):
+class EventsAdmin(ModelAdmin):
     list_display = ('title', 'event_type', 'start_time', 'end_time', 'is_paid')
     search_fields = ('title', 'description', 'event_type')
     list_filter = ('event_type', 'event_format', 'is_paid', 'is_member_only')
@@ -44,7 +45,7 @@ class EventsAdmin(admin.ModelAdmin):
 
 
 @admin.register(ResourceMeta)
-class ResourceMetaAdmin(admin.ModelAdmin):
+class ResourceMetaAdmin(ModelAdmin):
     list_display = ('title', 'slug', 'status', 'created_by')
     search_fields = ('title', 'description', 'slug')
     list_filter = ('status', 'tags', 'categories')
